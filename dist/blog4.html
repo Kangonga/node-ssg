@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> My new react workflow with parcel</title>
+</head>
+<body>
+    <p>Hello everybody 👋, I hope you’re staying safe out there in these trying times. I haven’t written anything in a while due to this situation but I thought why not share my new react workflow since some people might find it interesting, so here we go.</p>
+<p>I’ve almost always used create-react-app as my react starter, sometimes Gatsby or Next.js for Static Sites &amp; Server Side Rendering respectively, but mostly create-react-app for all my Single Page Apps. However as some of you might know the internals of create-react-app are abstracted away using the react-scripts package. This helps beginners like me get easily started without having to worry about webpack. But I was curious on how it actually worked and decided to make a react application from scratch.</p>
+<p>While learning about bundlers I discovered <a href="https://parceljs.org/">parcel</a> a bundler that requires zero configuration and works right out of the box. This got me really excited and after a few steps I got parcel working with react as well, here’s how I set it up. Also make sure to stick around till the end to see a super easy way to get started using a tiny package I made.</p>
+<h2 id="step-0">Step 0</h2>
+<p>If you don&#39;t have node &amp; npm installed already then go ahead and download both of their latest versions for your system from the previous links.</p>
+<h2 id="step-1">Step 1</h2>
+<p>Create a directory for your project, on Windows I used the following commands I&#39;m sure you can translate them over to your OS.</p>
+<pre><code class="language-bash">mkdir react-with-parcel
+cd react-with-parcel
+</code></pre>
+<h2 id="step-2">Step 2</h2>
+<p>Initialize an npm project and download your dependencies with the following commands:</p>
+<pre><code class="language-bash">npm init -y
+npm i -D parcel-bundler @babel/core @babel/preset-env @babel/preset-reactnpm i react react-dom
+</code></pre>
+<p>As you can see we initialize an npm project using <code>npm init</code> the <code>-y</code> flag is just there so it doesn&#39;t ask you the default questions. Then we install parcel-bundler and a few babel packages as dev dependencies (that&#39;s why the <code>-D</code> flag is used) and also <code>react</code> &amp; <code>react-dom</code> as regular dependencies. I&#39;m currently still using parcel v1 (i.e the parcel-bundler npm package not parcel) that&#39;s because parcel v2 is still in alpha and not yet stable. However once it is stable it promises some amazing features like out of the box support for jsx so we wouldn&#39;t even have to configure babel.</p>
+<h2 id="step-3">Step 3</h2>
+<p>Now that we have all our dependencies installed we can actually create our application. Parcel works on the principal of having one html file as it&#39;s entry point (you can have multiple as well) and then uses that to bundle all the assets. So let&#39;s create an <code>index.html</code> file. Personally I put this file in a <code>src</code> directory but if you want you can directly put it in the root directory of your project. However make sure to change the path in the following steps.</p>
+<pre><code class="language-html">&lt;!--The src/index.html file--&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;Parcel &amp; React&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;./index.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>As you can see we create a <code>div</code> with the id of &quot;root&quot; and then use a script tag to link to our JavaScript file. So let&#39;s create that JavaScript file.</p>
+<pre><code class="language-js">// The src/index.js file
+
+import React from &quot;react&quot;;
+import ReactDom from &quot;react-dom&quot;;
+import &quot;./index.css&quot;;
+
+const App = () =&gt; &lt;h1&gt;Hello World&lt;/h1&gt;;
+
+ReactDom.render(&lt;App /&gt;, document.getElementById(&quot;root&quot;));
+</code></pre>
+<p>We&#39;ve kept the file very simple but you can very easily import other components &amp; css files either from your files or from npm packages. SInce I&#39;ve imported &quot;./index.css&quot; let&#39;s go ahead &amp; make that file:</p>
+<pre><code class="language-css">/* The src/index.css file */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen,
+    Ubuntu, Cantarell, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif;
+}
+
+code {
+  font-family: &quot;Courier New&quot;, Courier, monospace;
+}
+</code></pre>
+<p>We&#39;ve kept it very basic just some small resets and system fonts.</p>
+<h2 id="step-4">Step 4</h2>
+<p>We&#39;re almost done! Now go to your <code>package.json</code> and add the <code>start</code> &amp; the <code>build</code> scripts. This is an example of how your <code>package.json</code> will look now:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;react-with-parcel&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;parcel src/index.html&quot;,
+    &quot;build&quot;: &quot;parcel build src/index.html&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;react&quot;: &quot;^16.13.1&quot;,
+    &quot;react-dom&quot;: &quot;^16.13.1&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;@babel/core&quot;: &quot;^7.9.0&quot;,
+    &quot;@babel/preset-env&quot;: &quot;^7.9.0&quot;,
+    &quot;@babel/preset-react&quot;: &quot;^7.9.4&quot;,
+    &quot;parcel-bundler&quot;: &quot;^1.12.4&quot;
+  }
+}
+</code></pre>
+<p>All we&#39;re doing is calling parcel &amp; giving it the html file we want to use &amp; for building a production build we call parcel build &amp; again give it the html file. Parcel build will output to the dist directory in your project.</p>
+<h2 id="and-youre-done">And you&#39;re done</h2>
+<p>That&#39;s it just open up a terminal &amp; run <code>npm start</code> and a development server should start up on <a href="https://localhost:1234">https://localhost:1234</a>. Amazing right!</p>
+<h2 id="making-this-even-easier">Making this even easier</h2>
+<p>Since I expect to be doing this many more times I decided to make a tiny npm package to bootstrap the project for me. So that it would be just as easy as create-react-app. And I&#39;m finally done with the package I called it <code>parcreate</code> and you can run it in your terminals now.</p>
+<pre><code class="language-bash"># The recommended way: (so that you have the latest version)
+npx parcreate my-apps-name
+
+# The old fashioned way:
+npm i -g parcreate
+parcreate my-apps-name
+</code></pre>
+<p>Creating <code>parcreate</code> was a lot of fun and I will be adding more templates with additional features like <code>scss</code> very soon so keep a lookout.</p>
+<p>You can find the github repo for parcreate <a href="https://github.com/kartiknair/parcreate">here</a> and please let me know if you face any issues running it as I&#39;ve only tested it on windows yet. Thank you all for reading about my findings &amp; be sure to stay safe. Bye!</p>
+<p>P.S. I’m trying to be more active on social media &amp; meet more people so drop me a message on my twitter (@nairkartik_).</p>
+
+    Feb 15,2023
+</body>
+</html>
