@@ -90,7 +90,7 @@ Project Link:[link](https://github.com/Kangonga/node-ssg#getting-started)
 
 <!-- ACKNOWLEDGMENTS -->
 ## Credits
-Katik Nair
+Katik Nair. 
 Their [article](https://betterprogramming.pub/how-to-build-a-simple-static-site-generator-using-node-js-6425b71272e0) on medium waws helpful in getting to know how to go about this project
     
 
