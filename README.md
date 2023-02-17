@@ -53,7 +53,6 @@ These are the steps required to use this project:
 ### Prerequisites
 
 NodeJS
-* npm
   ```
   nvm install latest
 
