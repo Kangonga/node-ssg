@@ -20,7 +20,7 @@
 <ul>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Contributors</a></li></ul>
+    <li><a href="#credits">Credits</a></li></ul>
   </ol>
 </details>
 
@@ -39,7 +39,7 @@ You can manually add an 'index.css' file in the css file to style the generated 
 The technologies used are:
 <ol>
 <li>node JS</li>
-
+</ol>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -82,7 +82,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link:[link](https://github.com/your_username/Kangonga)
+Project Link:[link](https://github.com/Kangonga/node-ssg#getting-started)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -90,9 +90,9 @@ Project Link:[link](https://github.com/your_username/Kangonga)
 
 <!-- ACKNOWLEDGMENTS -->
 ## Credits
-<li>Katik Nair
-    Their [article](https://betterprogramming.pub/how-to-build-a-simple-static-site-generator-using-node-js-6425b71272e0) on medium waws helpful in getting to know how to go about this project
-    </li>
+Katik Nair
+Their [article](https://betterprogramming.pub/how-to-build-a-simple-static-site-generator-using-node-js-6425b71272e0) on medium waws helpful in getting to know how to go about this project
+    
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
