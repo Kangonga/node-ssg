@@ -82,7 +82,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/SheeTabz/DigiHoteL](https://github.com/your_username/Kangonga)
+Project Link:[link](https://github.com/your_username/Kangonga)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
