@@ -62,8 +62,9 @@ NodeJS
 ### Installation
 
 1. Clone the repo
+```
    git@github.com:Kangonga/node-ssg.git
-
+```
 2. Install the dependencies
     npm install
 
